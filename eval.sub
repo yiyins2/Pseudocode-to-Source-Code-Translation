@@ -1,0 +1,19 @@
+universe = vanilla
+log = eval_$(Cluster).log
+
+executable = eval.sh
+arguments = $(Process) $(file) $(start)
+output = out_$(Cluster).out
+error = out_$(Cluster).err
+
+transfer_input_files = /home/yshen82/chtc.tar.gz, /home/yshen82/eval.py, /home/groups/cs704_yy/pytorch.tar.gz, /home/groups/cs704_yy/chtc/beams/$(file)
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT_OR_EVICT
+
+transfer_output_files = ./outputs
+
+request_cpus = 1
+request_memory = 10GB
+request_disk = 15GB
+
+queue file, start from models.txt
